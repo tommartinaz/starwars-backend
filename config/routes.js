@@ -4,4 +4,5 @@ const films = require('../controllers/films');
 module.exports = (app) => {
     app.get('/api/characters', characters.get_all_characters);
     app.get('/api/films/:id', films.get_one_film);
+    app.get('/api/films', films.get_all_films)
 }
