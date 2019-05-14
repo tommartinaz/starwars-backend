@@ -1,12 +1,32 @@
 const knex = require('../db/knex');
 
 module.exports = {
-    get_one_film: (req, res) => {
-        knex.raw(`select char.name 
-        from characters char 
-        join m2m_char_film m on char.id = m.character_id 
-        join films f on m.film_id = f.id 
-        where f.id = ${req.params.id}`)
-        .then(data => res.send(data.rows))
+    getMovies(req, res) {
+        knex('films')
+            .select()
+            .then(films => res.json(films));
+    },
+    getMovie(req, res) {
+        knex('films')
+            .select()
+            .where('id', req.params.filmId)
+            .then(films => res.json(films[0]));
+    },
+    createMovie(req, res) {
+        knex('films')
+            .insert(req.body, '*')
+            .then(films => res.status(201).json(films[0]));
+    },
+    updateMovie(req, res) {
+        knex('films')
+            .update(req.body, '*')
+            .where('id', req.params.filmId)
+            .then(films => res.status(203).json(films[0]));
+    },
+    deleteMovie(req, res) {
+        knex('films')
+            .delete()
+            .where('id', req.params.filmId)
+            .then(res.sendStatus(204));
     }
 }
