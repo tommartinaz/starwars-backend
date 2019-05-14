@@ -5,6 +5,7 @@ const genders = require('../controllers/genders');
 const planets = require('../controllers/planets');
 const designations = require('../controllers/designations');
 const classifications = require('../controllers/classifications');
+const species = require('../controllers/species');
 
 module.exports = (app) => {
     app.get('/api/characters', characters.get_all_characters);
@@ -48,4 +49,10 @@ module.exports = (app) => {
     app.get('/api/classifications/:classificationId', classifications.getClassification);
     app.patch('/api/classifications/:classificationId', classifications.updateClassification);
     app.delete('/api/classifications/:classificationId', classifications.deleteClassification);
+
+    app.get('/api/species', species.getAllSpecies);
+    app.post('/api/species', species.createSpecies);
+    app.get('/api/species/:speciesId', species.getOneSpecies);
+    app.patch('/api/species/:speciesId', species.updateSpecies);
+    app.delete('/api/species/:speciesId', species.deleteSpecies);
 }
