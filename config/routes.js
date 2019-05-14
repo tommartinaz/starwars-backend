@@ -1,6 +1,7 @@
 const characters = require('../controllers/characters');
 const films = require('../controllers/films');
 const languages = require('../controllers/languages');
+const genders = require('../controllers/genders');
 
 module.exports = (app) => {
     app.get('/api/characters', characters.get_all_characters);
@@ -20,4 +21,10 @@ module.exports = (app) => {
     app.get('/api/languages/:languageId', languages.getLanguage);
     app.patch('/api/languages/:languageId', languages.updateLanguage);
     app.delete('/api/languages/:languageId', languages.deleteLanguage);
+
+    app.get('/api/genders', genders.getGenders);
+    app.post('/api/genders', genders.createGender);
+    app.get('/api/genders/:genderId', genders.getGender);
+    app.patch('/api/genders/:genderId', genders.updateGender);
+    app.delete('/api/genders/:genderId', genders.deleteGender);
 }
