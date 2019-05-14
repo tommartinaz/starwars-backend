@@ -4,6 +4,7 @@ const languages = require('../controllers/languages');
 const genders = require('../controllers/genders');
 const planets = require('../controllers/planets');
 const designations = require('../controllers/designations');
+const classifications = require('../controllers/classifications');
 
 module.exports = (app) => {
     app.get('/api/characters', characters.get_all_characters);
@@ -41,4 +42,10 @@ module.exports = (app) => {
     app.get('/api/designations/designationId', designations.getDesignation);
     app.patch('/api/designations/:designationId', designations.updateDesignation);
     app.delete('/api/designations/:designationId', designations.deleteDesignation);
+
+    app.get('/api/classifications', classifications.getClassifications);
+    app.post('/api/classifications', classifications.createClassification);
+    app.get('/api/classifications/:classificationId', classifications.getClassification);
+    app.patch('/api/classifications/:classificationId', classifications.updateClassification);
+    app.delete('/api/classifications/:classificationId', classifications.deleteClassification);
 }
