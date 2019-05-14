@@ -3,6 +3,7 @@ const films = require('../controllers/films');
 const languages = require('../controllers/languages');
 const genders = require('../controllers/genders');
 const planets = require('../controllers/planets');
+const designations = require('../controllers/designations');
 
 module.exports = (app) => {
     app.get('/api/characters', characters.get_all_characters);
@@ -34,4 +35,10 @@ module.exports = (app) => {
     app.get('/api/planets/:planetId', planets.getPlanet);
     app.patch('/api/planets/:planetId', planets.updatePlanet);
     app.delete('/api/planets/:planetId', planets.deletePlanet);
+
+    app.get('/api/designations', designations.getDesignations);
+    app.post('/api/designations', designations.createDesignation);
+    app.get('/api/designations/designationId', designations.getDesignation);
+    app.patch('/api/designations/:designationId', designations.updateDesignation);
+    app.delete('/api/designations/:designationId', designations.deleteDesignation);
 }
